@@ -51,7 +51,6 @@ def create_ann(filename, image, boxes, labels,label_list):
     writer.addObject(label_list[labels[0]], boxes[0][0], boxes[0][1], boxes[0][2], boxes[0][3])
     name = filename.split('.')
     writer.save('/content/Yolo-digit-detector/tests/ann/'+name[0]+'.xml')
-    # writer.save('/content/Yolo-digit-detector/tests/imgs/'+filename)
 
 if __name__ == '__main__':
     # 1. extract arguments
@@ -67,7 +66,7 @@ if __name__ == '__main__':
     yolo.load_weights(args.weights)
 
     # 3. read image
-    write_dname = "detected"
+    write_dname = "/content/Yolo-digit-detector/tests/detected"
     if not os.path.exists(write_dname): os.makedirs(write_dname)
     annotations = parse_annotation(config['train']['valid_annot_folder'],
                                    config['train']['valid_image_folder'],
