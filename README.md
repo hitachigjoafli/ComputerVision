@@ -26,6 +26,50 @@ För road recognition har vi också två val (vilken lyx!).
 - Det andra alternativet är att man följer Self-Driving Car video serien (filväg nedan). Den är mycket bra i min mening, kan rekomenderas starkt!
 `Teams\TEBLOCK1X0s\Files\TEBLOCK\Resurser\Videor\Self-Driving Car\5. Computer Vision Finding Lane Lines`
 
+## YOLO!! You only look once (Object detection)
+[YOLO](https://pjreddie.com/darknet/yolo/) är en algoritm för att finna objekt på en bild,video eller live-ström. denna bygger på neurala nätverk och fungerar så att den kolla på bilden i helhet och tittar sedan endast på delar som ändras. Detta gör att den är mycket snabbare och än algoritmer som tittar på varje pixel i bilden varje gång.
+Det försa vi ska göra är att ladda ner ett förtränat set med yolo object. Dessa kallas Coco och kan identifera 80 olika förbestämda objekt som telefon, flygplan, person osv. Vi ska senare titta på hur vi kan träna egna objekt, samt hur vi kan exportera dem till mikrokontrollen.
+### [Använd yolo!](https://www.pyimagesearch.com/2018/11/12/yolo-object-detection-with-opencv/)
+Följ guiden i länken ovan, här är [en till bra resurs](https://pysource.com/2019/06/27/yolo-object-detection-using-opencv-with-python/) som kan ge extra koll.
+
+Föj guiden, för att starta koden så rekomenderar jag att man gör som på bilden nedan och skriver in följande kod (exempel finns längre ned).
+`python kodnamn.py --image images/bild.biltyp --yolo yolomapp`
+
+[Öppna CMD](https://pysource.com/2019/06/27/yolo-object-detection-using-opencv-with-python/)
+####   Exmpelkod
+Exmpelkod ligger i submappen yolo-openCV-detector här på github, där finns tre olika typer av yolo set:
+- yolo-coco, samma som i exemplet.
+- yolo-danger, tränade på att se farliga material skyltar.
+- yolo-legogubbe- tränad på att känna igen legogubbar.
+
+Förövrigt finns det en mapp med exempelbilder som man kan testa yolon på.
+I settet legogubbar finns flera olika vikter, testa gärna flera av dem genom att byta namn på den man vill testa till yolo.weights, blir det någon skillnad?
+Det finns även kod för det han gör i guiden och två fortsättningar:
+
+[1.yoloopencvimage.py](https://github.com/abbjoafli/ComputerVision/blob/master/yolo-openCV-detector/1.yoloopencvimage.py)
+[1.5.yolotestimage.py](https://github.com/abbjoafli/ComputerVision/blob/master/yolo-openCV-detector/1.5.yolotestimage.py)
+[2.yoloopencamera.py](https://github.com/abbjoafli/ComputerVision/blob/master/yolo-openCV-detector/2.yoloopencamera.py)
+
+Fortsättningarna går jag igenom [här(yolo-openCV-detector/README)](https://github.com/abbjoafli/ComputerVision/blob/master/yolo-openCV-detector/README.md).
+
+
+
+#### Kommandon
+```cmd
+python 1.yoloopencvimage.py --image images/room.png --yolo yolo-coco
+python 1.yoloopencvimage.py --image images/danger2.jpg --yolo yolo-danger
+python 1.yoloopencvimage.py --image images/dangerbig.jpg --yolo yolo-danger --confidence 0.7
+//--yolo yolo-danger --confidence 0.7 Fungerar även för 1,5 och två
+python 1.5.yolotestimage.py  --yolo yolo-legogubbe
+python 2.yoloopencamera.py  --yolo yolo-legogubbe
+
+python 1.yoloopencvimage.py --image images/legogang.jpg --yolo yolo-legogubbe
+```
+
+
+### Träna eget
+#### [Hitta bilder ](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/)
+
 # OpenMV
 
 ## Köra Yolo på MAIX Dock (mikrokontroll)
