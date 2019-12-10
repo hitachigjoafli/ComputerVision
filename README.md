@@ -28,7 +28,24 @@ För road recognition har vi också två val (vilken lyx!).
 
 # OpenMV
 
+## Köra Yolo på MAIX Dock (mikrokontroll)
+För att köra Yolo på MAIX Dock så måste man följa följande steg.
+1. Ladda ner kflash_gui
+`Teams\TEBLOCK1X0s\Files\TEBLOCK\Årskurs 2\Artificel inteligens\Computer Vision\MAIXPY (Sipeed)`
+2. Ladda ner och installera senaste versionen av  maixpy-ide-windows(0.2.4 har vi i mappen).
+`Teams\TEBLOCK1X0s\Files\TEBLOCK\Årskurs 2\Artificel inteligens\Computer Vision\MAIXPY (Sipeed)\kmodels`
+3. Ladda ner och flasha senaste versionen av maixpy (v0.5.0_0_gae433e8 har vi i mappen)
+3. Ladda ner och flasha din kmodel till rätt plats i mikrokontrollens minne eller till ett sdkort (se lista nedan)
 
+### Minnesplats och maixpy version
+
+- 20class.kmodel= 0x500000 - vanliga
+- racoon.kmodel= 0x600000 - vanliga
+- lego.kmodel= 0x600000 - minimum_with_ide_support
+
+#### Hur ska man tänka?
+Tänk att dina egenskapade kmodels bör vara på plats 0x600000 och att de ofta bör ha minimum_with_ide_support
+ då de är större än de förskapade sakerna.
 
 ## Google Colab
 [Keras to Kmodel](https://colab.research.google.com/drive/1WHguFsueli-kBhyfcb5dDnZ66urTlFXU)
