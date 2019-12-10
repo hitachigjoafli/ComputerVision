@@ -35,7 +35,7 @@ Följ guiden i länken ovan, här är [en till bra resurs](https://pysource.com/
 Föj guiden, för att starta koden så rekomenderar jag att man gör som på bilden nedan och skriver in följande kod (exempel finns längre ned).
 `python kodnamn.py --image images/bild.biltyp --yolo yolomapp`
 
-[Öppna CMD](https://pysource.com/2019/06/27/yolo-object-detection-using-opencv-with-python/)
+![Öppna CMD](https://github.com/abbjoafli/ComputerVision/blob/master/images/opencmd.png?raw=true)
 ####   Exmpelkod
 Exmpelkod ligger i submappen yolo-openCV-detector här på github, där finns tre olika typer av yolo set:
 - yolo-coco, samma som i exemplet.
@@ -51,7 +51,7 @@ Det finns även kod för det han gör i guiden och två fortsättningar:
 [2.yoloopencamera.py](https://github.com/abbjoafli/ComputerVision/blob/master/yolo-openCV-detector/2.yoloopencamera.py)
 
 Fortsättningarna går jag igenom [här(yolo-openCV-detector/README)](https://github.com/abbjoafli/ComputerVision/blob/master/yolo-openCV-detector/README.md).
-
+![yolo1](https://github.com/abbjoafli/ComputerVision/blob/master/images/yolo1.PNG?raw=true)
 
 
 #### Kommandon
