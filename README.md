@@ -29,13 +29,16 @@ För road recognition har vi också två val (vilken lyx!).
 # OpenMV
 
 ## Köra Yolo på MAIX Dock (mikrokontroll)
+![MAiX Dock](https://wiki.sipeed.com/assets/dan_dock_1.png)
 För att köra Yolo på MAIX Dock så måste man följa följande steg.
 1. Ladda ner kflash_gui
 `Teams\TEBLOCK1X0s\Files\TEBLOCK\Årskurs 2\Artificel inteligens\Computer Vision\MAIXPY (Sipeed)`
 2. Ladda ner och installera senaste versionen av  maixpy-ide-windows(0.2.4 har vi i mappen).
 `Teams\TEBLOCK1X0s\Files\TEBLOCK\Årskurs 2\Artificel inteligens\Computer Vision\MAIXPY (Sipeed)\kmodels`
-3. Ladda ner och flasha senaste versionen av maixpy (v0.5.0_0_gae433e8 har vi i mappen)
-3. Ladda ner och flasha din kmodel till rätt plats i mikrokontrollens minne eller till ett sdkort (se lista nedan)
+3. Ladda ner och flasha senaste versionen av maixpy (v0.5.0_0_gae433e8 har vi i mappen) genom att öppna Kflash_gui.
+![Flash Bin](https://github.com/abbjoafli/ComputerVision/blob/master/images/flash_bin.PNG?raw=true)
+4. Ladda ner och flasha din kmodel till rätt plats i mikrokontrollens minne eller till ett sdkort (se lista nedan)
+![Flash Kmodel](https://github.com/abbjoafli/ComputerVision/blob/master/images/flash_kmodel.PNG?raw=true)
 
 ### Minnesplats och maixpy version
 
@@ -46,6 +49,19 @@ För att köra Yolo på MAIX Dock så måste man följa följande steg.
 #### Hur ska man tänka?
 Tänk att dina egenskapade kmodels bör vara på plats 0x600000 och att de ofta bör ha minimum_with_ide_support
  då de är större än de förskapade sakerna.
+
+5. Öppna MAiX IDE och anslut till mikrokontrollern via den gröna knappen i vänstra hörnet (se bild). När den knappen har blivit röd så är du ansluten och kan trycka på playknappen under. När den har blivit ett rött kryss så är koden överförd till mikrokontrollen och den körs. Du kan nu använda din mikrokontroll och glöm inte att kika i serialmonitorn(också med på bilden, längst ner i mitten).
+![Anslut](https://github.com/abbjoafli/ComputerVision/blob/master/images/Connect.PNG?raw=true)
+
+#### Om den inte vill ansluta vad kan det vara för fel då?
+- Ett fel kan vara att du har bränt det till fel flashdel, t.ex 0x60000 istället för 0x600000 eller 0x500000, titta noga och gör om.
+- Man kan ha för stor kmodel och måste använda maixpy_minimum_with_ide_support eller maixpy_minimum istället för vanliga maixpy.
+
+
+
+
+![Legogubbe](https://github.com/abbjoafli/ComputerVision/blob/master/images/legogubbe2.png?raw=true)
+
 
 ## Google Colab
 [Keras to Kmodel](https://colab.research.google.com/drive/1WHguFsueli-kBhyfcb5dDnZ66urTlFXU)
