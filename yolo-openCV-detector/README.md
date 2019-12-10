@@ -51,6 +51,7 @@ Kommer förhoppningsvis snart, tills dess kika på koden i 2.yoloopencamera.py o
 ![Danger](https://github.com/abbjoafli/ComputerVision/blob/master/images/yolo2.PNG?raw=true)
 
 # cmd i mappen
+ ```python
 python 1.yoloopencvimage.py --image images/room.png --yolo yolo-coco
 python 1.yoloopencvimage.py --image images/danger2.jpg --yolo yolo-danger
 python 1.yoloopencvimage.py --image images/dangerbig.jpg --yolo yolo-danger --confidence 0.7
@@ -59,3 +60,4 @@ python 1.5.yolotestimage.py  --yolo yolo-legogubbe
 python 2.yoloopencamera.py  --yolo yolo-legogubbe
 
 python 1.yoloopencvimage.py --image images/legogang.jpg --yolo yolo-legogubbe
+```
