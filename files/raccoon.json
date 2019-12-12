@@ -10,7 +10,7 @@
         "no_object_scale" : 	1.0
     },
     "pretrained" : {
-        "full":   				"/content/Yolo-digit-detector/raccoon"
+        "full":   				"/content/Yolo-digit-detector/raccoon/model.h5"
     },
     "train" : {
         "actual_epoch":         20,
