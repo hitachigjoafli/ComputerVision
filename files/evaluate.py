@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# This driver performs 2-functions for the validation images specified in configuration file:
-#     1) evaluate fscore of validation images.
-#     2) stores the prediction results of the validation images.
-
 import argparse
 import json
 import cv2
@@ -73,34 +67,24 @@ if __name__ == '__main__':
                                    config['model']['labels'],
                                    is_only_detect=config['train']['is_only_detect'])
 
-    #n_true_positives = 0
-    #n_truth = 0
-    #n_pred = 0
-    #for i in range(len(annotations)):
+    n_true_positives = 0
+    n_truth = 0
+    n_pred = 0
     for filename in os.listdir('/content/Yolo-digit-detector/tests/images'):
-        #img_path = annotations.fname(i)
         img_path = os.path.join('/content/Yolo-digit-detector/tests/images',filename)
-        #img_fname = os.path.basename(img_path)
-        img_fname = filename
-        image = cv2.imread(img_path)
-        #true_boxes = annotations.boxes(i)
-        #true_labels = annotations.code_labels(i)
-        
-        boxes, probs = yolo.predict(image, float(args.threshold))
-        labels = np.argmax(probs, axis=1) if len(probs) > 0 else [] 
-      
-        # 4. save detection result
-        image = draw_scaled_boxes(image, boxes, probs, config['model']['labels'])
-        output_path = os.path.join(write_dname, os.path.split(img_fname)[-1])
-        label_list = config['model']['labels']
-        #cv2.imwrite(output_path, image)
-        print("{}-boxes are detected. {} saved.".format(len(boxes), output_path))
-        if len(probs) > 0:
-            create_ann(filename,image,boxes,labels,label_list)
+        img_fname = os.path.basename(img_path)
+        suffix=filename.split(".")
+        if suffix[1]== "jpg" or suffix[1]== "png" or suffix[1]== "JPEG" :
+            image = cv2.imread(img_path)
+            boxes, probs = yolo.predict(image, float(args.threshold))
+            labels = np.argmax(probs, axis=1) if len(probs) > 0 else [] 
+            # 4. save detection result
+            image = draw_scaled_boxes(image, boxes, probs, config['model']['labels'])
+            output_path = os.path.join(write_dname, os.path.split(img_fname)[-1])
+            label_list = config['model']['labels']
             cv2.imwrite(output_path, image)
-            print(label_list[labels[0]], " with a certainty of",probs[0][0])
-
-        #n_true_positives += count_true_positives(boxes, true_boxes, labels, true_labels)
-        #n_truth += len(true_boxes)
-        #n_pred += len(boxes)
-    #print(calc_score(n_true_positives, n_truth, n_pred))
+            print("{}-boxes are detected. {} saved.".format(len(boxes), output_path))
+            if len(probs) > 0:
+                create_ann(filename,image,boxes,labels,label_list)
+                cv2.imwrite(output_path, image)
+                print(label_list[labels[0]], " with a certainty of",probs)
