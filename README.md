@@ -2,11 +2,31 @@
 
 ## Table of Contents
 
+- [Computer Vision](#computer-vision)
+  - [Table of Contents](#table-of-contents)
 - [OpenCV](#opencv)
-    - [Grunder](#grunder)
-      - [Kul Bonus Rita med webbkameran](#kul%20bonus%20rita%20med%20webbkameran)
-
-### Example 1 Heading
+  - [Grunder](#grunder)
+    - [Kul Bonus Rita med webbkameran](#kul-bonus-rita-med-webbkameran)
+  - [Road Recognition](#road-recognition)
+  - [YOLO!! You only look once (Object detection)](#yolo-you-only-look-once-object-detection)
+    - [Använd yolo!](#anv%c3%a4nd-yolo)
+      - [Exempelkod](#exempelkod)
+      - [Kommandon](#kommandon)
+- [Google Colab](#google-colab)
+  - [Träna yolo i molnet med keras](#tr%c3%a4na-yolo-i-molnet-med-keras)
+    - [Video där jag går igenom vad som händer i keras på google colab](#video-d%c3%a4r-jag-g%c3%a5r-igenom-vad-som-h%c3%a4nder-i-keras-p%c3%a5-google-colab)
+- [Skapa eget yolo-dataset](#skapa-eget-yolo-dataset)
+  - [Hitta bilder ](#hitta-bilder)
+  - [Train Yolo2 with custom objects](#train-yolo2-with-custom-objects)
+    - [För att köra i karas](#f%c3%b6r-att-k%c3%b6ra-i-karas)
+      - [Bild endelse](#bild-endelse)
+      - [Label konverterare](#label-konverterare)
+- [OpenMV](#openmv)
+  - [Köra Yolo på MAIX Dock (mikrokontroll)](#k%c3%b6ra-yolo-p%c3%a5-maix-dock-mikrokontroll)
+    - [Minnesplats och maixpy version](#minnesplats-och-maixpy-version)
+      - [Hur ska man tänka?](#hur-ska-man-t%c3%a4nka)
+      - [Om den inte vill ansluta vad kan det vara för fel då?](#om-den-inte-vill-ansluta-vad-kan-det-vara-f%c3%b6r-fel-d%c3%a5)
+  - [Road following](#road-following)
 
 # OpenCV
 ## Grunder
@@ -40,11 +60,13 @@ Det försa vi ska göra är att ladda ner ett förtränat set med yolo object. D
 ### [Använd yolo!](https://www.pyimagesearch.com/2018/11/12/yolo-object-detection-with-opencv/)
 Följ guiden i länken ovan, här är [en till bra resurs](https://pysource.com/2019/06/27/yolo-object-detection-using-opencv-with-python/) som kan ge extra koll.
 
+Filerna guiden pratar om finns i [Githubben Computer Vision](https://github.com/abbjoafli/ComputerVision/tree/master/yolo-openCV-detector/yolo-coco), det kan vara lättare att ladda ner dem därifrån.
+
 Föj guiden, för att starta koden så rekomenderar jag att man gör som på bilden nedan och skriver in följande kod (exempel finns längre ned).
 `python kodnamn.py --image images/bild.biltyp --yolo yolomapp`
 
 ![Öppna CMD](https://github.com/abbjoafli/ComputerVision/blob/master/images/opencmd.png?raw=true)
-####   Exmpelkod
+####   Exempelkod
 Exmpelkod ligger i submappen yolo-openCV-detector här på github, där finns tre olika typer av yolo set:
 - yolo-coco, samma som i exemplet.
 - yolo-danger, tränade på att se farliga material skyltar.
@@ -73,10 +95,50 @@ python 2.yoloopencamera.py  --yolo yolo-legogubbe
 
 python 1.yoloopencvimage.py --image images/legogang.jpg --yolo yolo-legogubbe
 ```
+# Google Colab
+## Träna yolo i molnet med keras
+I detta avsnitt ska vi testa träna yolo, detta ska vi göra i molnet så sparar vi på vår egna dators datakraft. I vårt fall ska vi använda Google Colabs vilket är ett verktyg som kör pythonkod liknande jupyter notebook på googles servrar. Där får man 12 gb ram och kan använda denna virtuella maskinen i 12 timmar innan den startas om. För att träna saker längre än tolv timmar kan man spara sina vikter mellan varven och starta upp igen när maskinen startats om.
+
+Vi ska följa en [guide](https://www.instructables.com/id/Object-Detection-With-Sipeed-MaiX-BoardsKendryte-K/) som lär oss hur man gör en yolo vikt som kan känna igen tvättbjörnar. Ni följer instruktionerna i guiden men gör fet via google, se länken nedan.
+
+För detta behöver du först skapa ett googlekonto om du inte redan har ett och gå sedan in på länken här([Keras to Kmodel](https://colab.research.google.com/drive/1WHguFsueli-kBhyfcb5dDnZ66urTlFXU)).
+
+Gör det först för racoon datasettet, testa sedan ändra om så du kan göra det för legogubbarna.
+
+### [Video där jag går igenom vad som händer i keras på google colab](https://web.microsoftstream.com/video/eddd21fe-f454-48f0-8c5b-c44d3c07f9e4) 
 
 
-### Träna eget
-#### [Hitta bilder ](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/)
+# Skapa eget yolo-dataset
+Det du vill tänka på när du gör ditt eget datasett är att få ut det mesta av det, om du tränar det att se hästar vill du inte bara ha exempel på bruna hästar för då kanske den inte förstår att en vit häst är en häst. Du vill inte heller ha bara bilder på ensamma hästar för då kanske settet inte förstår att det kan vara flera hästar på samma bild. Du vill inte heller ha att alla hästar står från samma håll för då tror AIn att det är enda sättet hästar står på och alla som står annorlunda är då inte hästar. Lego exemplet är bra exempel att titta på, försök se fel i testbilderna som lego-settet missar och fundera varför.
+
+## [Hitta bilder ](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/)
+Söktips
+```
+site:https://brickset.com/minifigs
+site:http://www.collectibleminifigs.com
+python download_images.py --urls urls.txt --output images
+```
+## [Train Yolo2 with custom objects](https://timebutt.github.io/static/how-to-train-yolov2-to-detect-custom-objects/)
+Denna guide lär dig albela ett dataset på NFCA artiklar. Den har redan en färdig bildsamling som du kan använda för att testa köra koden med.
+
+När du ska skapa din egen data så är den här[ yolo annotation tool](https://medium.com/@manivannan_data/yolo-annotation-tool-new-18c7847a2186)  mycket bra så kör med den istället för den som rekomenderas i guiden.
+
+
+
+### För att köra i karas
+#### Bild endelse
+I karas måste bilderna vara av filtypen .JPEG för att kunna tränas.
+För att göra om bilder till .JPEG istället för jpg eller png. så finns det verktyget rekomenderat i guiden annars finns även ett simpeplt python skript jag har gjort([renamer](https://raw.githubusercontent.com/abbjoafli/Lego-dataset/master/renamer.py   ))
+Du väljer bara mappen renamer ska köras i och kör scriptet så byter den endelse på objektet.
+
+`python renamer.py`
+
+#### Label konverterare
+Du måste också konvertera dina labels till voc format, det vill säga xml istället för .txt. Detta gär vi genom att ladda ner pythonscriptet [yolo-voc-converter.py](https://raw.githubusercontent.com/abbjoafli/Lego-dataset/master/yolo-voc-converter.py), ändrar om det så klasstyp och mapp stämmer för dig.
+
+`python main.py`
+
+Efter detta så är det bara att antingen ladda upp ditt datasett till en github repo och länka den till keras koden på google colab eller att ladda upp det via gdrive eller manuellt via ladda upp knappen. Våga vinn!
 
 # OpenMV
 
@@ -115,5 +177,9 @@ Tänk att dina egenskapade kmodels bör vara på plats 0x600000 och att de ofta 
 ![Legogubbe](https://github.com/abbjoafli/ComputerVision/blob/master/images/legogubbe2.png?raw=true)
 
 
-## Google Colab
-[Keras to Kmodel](https://colab.research.google.com/drive/1WHguFsueli-kBhyfcb5dDnZ66urTlFXU)
+## Road following
+https://maixpy.sipeed.com/en/libs/machine_vision/image.html
+https://github.com/AIWintermuteAI/maixpy-openmv-demos
+https://www.youtube.com/watch?v=dOd1TZFR480
+https://github.com/zlite/OpenMVrover/blob/master/linefollowing.py
+
