@@ -98,6 +98,7 @@ if __name__ == '__main__':
         if len(probs) > 0:
             create_ann(filename,image,boxes,labels,label_list)
             cv2.imwrite(output_path, image)
+            print(label_list[labels[0]], " with a certainty of",probs[0][0])
 
         #n_true_positives += count_true_positives(boxes, true_boxes, labels, true_labels)
         #n_truth += len(true_boxes)
