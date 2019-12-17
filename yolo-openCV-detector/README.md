@@ -37,7 +37,6 @@ Här skriver vi ut den nya bilden med ruta, label och allt och visar sedan  upp 
 
 
  ```python
-ap.add_argument(
                 cv2.imwrite(os.path.join(output_path, image_file), image)
                 cv2.imshow("Image", image)
 ```
