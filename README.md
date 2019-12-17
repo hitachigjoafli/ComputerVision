@@ -61,6 +61,11 @@ Det försa vi ska göra är att ladda ner ett förtränat set med yolo object. D
 Följ guiden i länken ovan, här är [en till bra resurs](https://pysource.com/2019/06/27/yolo-object-detection-using-opencv-with-python/) som kan ge extra koll.
 
 Filerna guiden pratar om finns i [Githubben Computer Vision](https://github.com/abbjoafli/ComputerVision/tree/master/yolo-openCV-detector/yolo-coco), det kan vara lättare att ladda ner dem därifrån.
+#### Länkar till vikterna
+Lägg dessa i deras respektive mapp, Coco i yolo-coco osv.
+[Coco vikt](https://abbindgym-my.sharepoint.com/:u:/g/personal/joakim_flink_abbindustrigymnasium_se/EVzwihUKtSBEhbz4aMU2Ma0BPY18gIG2lA-_lh_YnvB-fA?e=JroeFG)
+[Danger vikt](https://abbindgym-my.sharepoint.com/:u:/g/personal/joakim_flink_abbindustrigymnasium_se/EZZcHUe-l2xHjSj_lGcZ70wB3M0PIetSv7KP111wJpSRnA?e=9ie4Ir)
+[Lego vikt](https://abbindgym-my.sharepoint.com/:u:/g/personal/joakim_flink_abbindustrigymnasium_se/EWh3iCUNJZBMp9D7I68OlpIB9VMzScAviDzkZJ3R8QBp3w?e=hivBVs)
 
 Föj guiden, för att starta koden så rekomenderar jag att man gör som på bilden nedan och skriver in följande kod (exempel finns längre ned).
 `python kodnamn.py --image images/bild.biltyp --yolo yolomapp`
