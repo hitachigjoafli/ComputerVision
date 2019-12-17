@@ -126,6 +126,8 @@ python download_images.py --urls urls.txt --output images
 ## [Train Yolo2 with custom objects](https://timebutt.github.io/static/how-to-train-yolov2-to-detect-custom-objects/)
 Denna guide lär dig albela ett dataset på NFCA artiklar. Den har redan en färdig bildsamling som du kan använda för att testa köra koden med.
 
+Här är en [main.py](https://github.com/abbjoafli/ComputerVision/blob/master/files/main.py) för python 3, se till att ha laddat ner alla bibliotek via pip!
+
 När du ska skapa din egen data så är den här[ yolo annotation tool](https://medium.com/@manivannan_data/yolo-annotation-tool-new-18c7847a2186)  mycket bra så kör med den istället för den som rekomenderas i guiden.
 
 
