@@ -10,6 +10,7 @@
   - [Road Recognition](#road-recognition)
   - [YOLO!! You only look once (Object detection)](#yolo-you-only-look-once-object-detection)
     - [Använd yolo!](#anv%c3%a4nd-yolo)
+      - [Länkar till vikterna](#l%c3%a4nkar-till-vikterna)
       - [Exempelkod](#exempelkod)
       - [Kommandon](#kommandon)
 - [Google Colab](#google-colab)
@@ -21,6 +22,8 @@
     - [För att köra i karas](#f%c3%b6r-att-k%c3%b6ra-i-karas)
       - [Bild endelse](#bild-endelse)
       - [Label konverterare](#label-konverterare)
+    - [Ladda upp](#ladda-upp)
+      - [Förklaring](#f%c3%b6rklaring)
 - [OpenMV](#openmv)
   - [Köra Yolo på MAIX Dock (mikrokontroll)](#k%c3%b6ra-yolo-p%c3%a5-maix-dock-mikrokontroll)
     - [Minnesplats och maixpy version](#minnesplats-och-maixpy-version)
@@ -126,26 +129,56 @@ python download_images.py --urls urls.txt --output images
 ## [Train Yolo2 with custom objects](https://timebutt.github.io/static/how-to-train-yolov2-to-detect-custom-objects/)
 Denna guide lär dig albela ett dataset på NFCA artiklar. Den har redan en färdig bildsamling som du kan använda för att testa köra koden med.
 
-Här är en [main.py](https://github.com/abbjoafli/ComputerVision/blob/master/files/main.py) för python 3, se till att ha laddat ner alla bibliotek via pip!
-
 När du ska skapa din egen data så är den här[ yolo annotation tool](https://medium.com/@manivannan_data/yolo-annotation-tool-new-18c7847a2186)  mycket bra så kör med den istället för den som rekomenderas i guiden.
 
+Istället för main.py i artikeln så använd den här, [main.py](https://github.com/abbjoafli/ComputerVision/blob/master/files/main.py) den är omgjord för python 3, se till att ha laddat ner alla bibliotek via pip för att få koden att fungera!
+När programmet är öppnat så måste du se till att ha bilderna liggande i en mapp som heter images och inuti en submapp som heter det du vill kalla ditt data set. Exempel images/bilar/volvo1.jpg, images/bilar/volvo2.jpg... Då kan du sedan skriva in bilar i rutan i programmet så kommer den gå igenom alla bilder i mappen.
 
+`python main.py`
+
+![Images example](https://github.com/abbjoafli/ComputerVision/blob/master/images/images.PNG?raw=true)
 
 ### För att köra i karas
 #### Bild endelse
-I karas måste bilderna vara av filtypen .JPEG för att kunna tränas.
+I karas måste bilderna vara av filtypen .JPEG för att kunna tränas. 
 För att göra om bilder till .JPEG istället för jpg eller png. så finns det verktyget rekomenderat i guiden annars finns även ett simpeplt python skript jag har gjort([renamer](https://raw.githubusercontent.com/abbjoafli/Lego-dataset/master/renamer.py   ))
 Du väljer bara mappen renamer ska köras i och kör scriptet så byter den endelse på objektet.
+**Detta får inte göras innan du labelat bilderna för då visas de inte upp i annotationtool!**. Råkar du dock göra det så är det enkelt att ändra om i koden för renamer så den gör motsatta, det vill säga från JPEG till jpg.
 
 `python renamer.py`
 
 #### Label konverterare
 Du måste också konvertera dina labels till voc format, det vill säga xml istället för .txt. Detta gär vi genom att ladda ner pythonscriptet [yolo-voc-converter.py](https://raw.githubusercontent.com/abbjoafli/Lego-dataset/master/yolo-voc-converter.py), ändrar om det så klasstyp och mapp stämmer för dig.
+För att få detta och fungera måste bilderna och labels ligga i samma mapp. Du kan till exempel lägga både bilder och labels direkt i label mappen.
 
-`python main.py`
 
-Efter detta så är det bara att antingen ladda upp ditt datasett till en github repo och länka den till keras koden på google colab eller att ladda upp det via gdrive eller manuellt via ladda upp knappen. Våga vinn!
+`python yolo-voc-converter.py`
+![Label](https://github.com/abbjoafli/ComputerVision/blob/master/images/labels.PNG?raw=true)
+
+
+### Ladda upp
+Efter detta så är det bara att antingen ladda upp ditt datasett till en github repo och länka den till keras koden på google colab via github clone eller att ladda upp det via gdrive eller manuellt via ladda upp knappen. Våga vinn!
+
+Mappstrukturen jag rekommenderar är detta.
+```
+annotations/
+annotations_xml/
+images/
+testing_annotations_xml/
+testing_images/
+Readme.md
+```
+#### Förklaring
+I mappen
+- annotations bör det ligga labels som txt-filer, detta för att man ska kunna träna yolo med darknet om man vill.
+- annotations_xml ska det ligga labesl som xml filer, detta för att man ska kunna träna med Keras.
+- images, bilderna som ska användas för träning
+-  testing_annotations_xml, annotations som xml för validering/testing
+-  testing_images, bilderna som ska användas för validering/testing
+-  Readme, förklarar vad datasettet är och vad som ligger på de olika platserna.
+
+**Varför finns ingen testing för .txt filerna?**
+Jo det finns inte för att i darknet så skickar man in två listor(dessa skapas av process.py i annotation-tool) en för test och en för träning. De kan därför ligga kvar i samma mappar.
 
 # OpenMV
 
