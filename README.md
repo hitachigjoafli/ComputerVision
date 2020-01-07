@@ -198,7 +198,7 @@ För att köra Yolo på MAIX Dock så måste man följa följande steg.
 
 - 20class.kmodel= 0x500000 - vanliga
 - racoon.kmodel= 0x600000 - vanliga
-- lego.kmodel= 0x600000 - minimum_with_ide_support
+- lego.kmodel= 0x600000 - vanliga
 
 #### Hur ska man tänka?
 Tänk att dina egenskapade kmodels bör vara på plats 0x600000 och att de ofta bör ha minimum_with_ide_support
