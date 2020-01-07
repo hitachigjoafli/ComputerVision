@@ -221,14 +221,10 @@ Tänk att dina egenskapade kmodels bör vara på plats 0x600000 och att de ofta 
 För att kunna hitta vägar eller streck i allmänhet i openMV så gör man lite annorlunda än i OpenCV, tankesättet är detsamma men tillvägagångsättet varierar. [Här](https://raw.githubusercontent.com/abbjoafli/ComputerVision/master/files/findlanes.py) har jag gjort en kodsnutt som hittar ett streck i mitten av skärmen. Det kan man ha som grund när man bygger på och utvecklar det till något som mer liknar resultatet i OpenCV, om det behövs, vill säga.
 
 Här kommer några bra resurser för att kunna göra din egen road recognition eller bara bli bättre på OpenMV överlag. Testa dessa, ändra saker,få inspiration, lek och få det till något bra, våga vinn:
-[MaiXPY dokumentation](https://maixpy.sipeed.com/en/libs/machine_vision/image.html)
-[MaiXPY openMV demon](https://github.com/AIWintermuteAI/maixpy-openmv-demos)
-[Linear Regressions for Line Following w/ the OpenMV Cam](https://www.youtube.com/watch?v=dOd1TZFR480)
-[OpenMV robot following lines](https://github.com/zlite/OpenMVrover/blob/master/linefollowing.py)
 
-
-
-
-
+- [MaiXPY dokumentation](https://maixpy.sipeed.com/en/libs/machine_vision/image.html)
+- [MaiXPY openMV demon](https://github.com/AIWintermuteAI/maixpy-openmv-demos)
+- [Linear Regressions for Line Following w/ the OpenMV Cam](https://www.youtube.com/watch?v=dOd1TZFR480)
+- [OpenMV robot following lines](https://github.com/zlite/OpenMVrover/blob/master/linefollowing.py)
 
 
