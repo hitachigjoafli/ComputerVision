@@ -10,19 +10,19 @@
         "no_object_scale" : 	1.0
     },
     "pretrained" : {
-        "full":   				"/content/Yolo-digit-detector/raccoon/model.h5"
+        "full":   				"/content/Yolo-digit-detector/save-files/model.h5"
     },
     "train" : {
-        "actual_epoch":         20,
+        "actual_epoch":         100,
         "train_image_folder":   "/content/raccoon_dataset/images",
         "train_annot_folder":   "/content/raccoon_dataset/annotations",
-        "train_times":          2,
+        "train_times":          6,
         "valid_image_folder":   "/content/raccoon_dataset/images",
         "valid_annot_folder":   "/content/raccoon_dataset/annotations",
         "valid_times":          2,
-        "batch_size":           4,
+        "batch_size":           6,
         "learning_rate":        1e-4,
-        "saved_folder":   		"/content/Yolo-digit-detector/raccoon",
+        "saved_folder":   		"/content/Yolo-digit-detector/save-files",
         "first_trainable_layer": "",
         "jitter":				true,
         "is_only_detect" : 		false
