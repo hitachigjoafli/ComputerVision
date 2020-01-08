@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+# This driver performs 2-functions for the validation images specified in configuration file:
+#     1) evaluate fscore of validation images.
+#     2) stores the prediction results of the validation images.
+
 import argparse
 import json
 import cv2
@@ -6,14 +12,15 @@ from yolo.frontend import create_yolo
 from yolo.backend.utils.box import draw_scaled_boxes
 from yolo.backend.utils.annotation import parse_annotation
 from yolo.backend.utils.eval.fscore import count_true_positives, calc_score
-import os
-import yolo
+
 from pascal_voc_writer import Writer
 from shutil import copyfile
+import os
+import yolo
 
 
 DEFAULT_CONFIG_FILE = os.path.join("/content/Yolo-digit-detector/configs", "raccoon.json")
-DEFAULT_WEIGHT_FILE = os.path.join("/content/Yolo-digit-detector", "model.h5")
+DEFAULT_WEIGHT_FILE = os.path.join("/content/Yolo-digit-detector/save-files", "model.h5")
 DEFAULT_THRESHOLD = 0.3
 
 
@@ -39,10 +46,18 @@ argparser.add_argument(
     default=DEFAULT_WEIGHT_FILE,
     help='trained weight files')
 
-def create_ann(filename, image, boxes, labels,label_list):
-    copyfile(os.path.join('/content/Yolo-digit-detector/tests/images',filename), '/content/Yolo-digit-detector/tests/imgs/'+filename)
-    writer = Writer(os.path.join('/content/Yolo-digit-detector/tests/images',filename), 224, 224)
-    writer.addObject(label_list[labels[0]], boxes[0][0], boxes[0][1], boxes[0][2], boxes[0][3])
+argparser.add_argument(
+    '-p',
+    '--path',
+    default='/content/Yolo-digit-detector/tests/images',
+    help='path to images')
+
+def create_ann(filename, image, boxes, right_label, label_list):
+    copyfile(os.path.join(args.path,filename), '/content/Yolo-digit-detector/tests/imgs/'+filename)
+    writer = Writer(os.path.join(args.path,filename), 224, 224)
+    print(right_label)
+    for i in range(len(right_label)):
+    	writer.addObject(label_list[right_label[i]], boxes[i][0], boxes[i][1], boxes[i][2], boxes[i][3])
     name = filename.split('.')
     writer.save('/content/Yolo-digit-detector/tests/ann/'+name[0]+'.xml')
 
@@ -51,10 +66,17 @@ if __name__ == '__main__':
     args = argparser.parse_args()
     with open(args.conf) as config_buffer:
         config = json.loads(config_buffer.read())
-
+    if config['train']['is_only_detect']:
+        labels = ['']
+    else:
+        if config['model']['labels']:
+            labels = config['model']['labels']
+        else:
+            labels = get_object_labels(config['train']['train_annot_folder'])
+    print(labels)
     # 2. create yolo instance & predict
     yolo = create_yolo(config['model']['architecture'],
-                       config['model']['labels'],
+                       labels,
                        config['model']['input_size'],
                        config['model']['anchors'])
     yolo.load_weights(args.weights)
