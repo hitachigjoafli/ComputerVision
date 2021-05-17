@@ -109,7 +109,10 @@ I detta avsnitt ska vi testa träna yolo, detta ska vi göra i molnet så sparar
 
 Vi ska följa en [guide](https://www.instructables.com/id/Object-Detection-With-Sipeed-MaiX-BoardsKendryte-K/) som lär oss hur man gör en yolo vikt som kan känna igen tvättbjörnar. Ni följer instruktionerna i guiden men gör fet via google, se länken nedan.
 
-För detta behöver du först skapa ett googlekonto om du inte redan har ett och gå sedan in på länken här([Keras to Kmodel](https://colab.research.google.com/drive/1WHguFsueli-kBhyfcb5dDnZ66urTlFXU)).
+För detta behöver du först skapa ett googlekonto om du inte redan har ett och gå sedan in på länken här
+([Ny länk](https://colab.research.google.com/github/AIWintermuteAI/aXeleRate/blob/master/resources/aXeleRate_pascal20_detector.ipynb)
+
+([Gammal länk](https://colab.research.google.com/drive/1WHguFsueli-kBhyfcb5dDnZ66urTlFXU)).
 
 Gör det först för racoon datasettet, testa sedan ändra om så du kan göra det för legogubbarna.
 
