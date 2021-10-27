@@ -197,6 +197,11 @@ För att köra Yolo på MAIX Dock så måste man följa följande steg.
 4. Ladda ner och flasha din kmodel till rätt plats i mikrokontrollens minne eller till ett sdkort (se lista nedan)
 ![Flash Kmodel](https://github.com/abbjoafli/ComputerVision/blob/master/images/flash_kmodel.PNG?raw=true)
 
+OM DU inte får upp några COM-portar så måste du uppdatera drivers manuellt. Denna heter CH34x_Install_Windows_v3_4 och ligger i 
+`Teams\TEBLOCK1X0s\Files\TEBLOCK\Årskurs 2\Artificel inteligens\Computer Vision\MAIXPY (Sipeed)\`
+
+Du kan få install error men det är okej.
+
 ### Minnesplats och maixpy version
 
 - 20class.kmodel= 0x500000 - vanliga
