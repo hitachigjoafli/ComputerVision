@@ -33,7 +33,7 @@
 
 # OpenCV
 ## Grunder
-I grunderna finns det två alternativ ([Open CV Python Tut For Beginners](https://www.youtube.com/watch?v=kdLM6AOd2vc&list=PLS1QulWo1RIa7D1O6skqDQ-JZ1GGHKK-K&index=1) och [Afshins Open CV tutorial](https://www.youtube.com/watch?v=izN-NLpS5t8&list=PLiHa1s-EL3vjr0Z02ihr6Lcu4Q0rnRvjm&index=3))  både är väldigt bra, kika och se vilken du gillar och vill följa. 
+I grunderna finns det två alternativ [Open CV Python Tut For Beginners](https://www.youtube.com/watch?v=kdLM6AOd2vc&list=PLS1QulWo1RIa7D1O6skqDQ-JZ1GGHKK-K&index=1) och [Afshins Open CV tutorial](https://www.youtube.com/watch?v=izN-NLpS5t8&list=PLiHa1s-EL3vjr0Z02ihr6Lcu4Q0rnRvjm&index=3)  både är väldigt bra, kika och se vilken du gillar och vill följa. 
 
 Gör de delar du tycker verkar spännande på videorna och gå sen vidare, ladda ner exempelkod och experimentera runt, nu ska vi lära oss!
 
@@ -42,7 +42,7 @@ Gör de delar du tycker verkar spännande på videorna och gå sen vidare, ladda
 
 
 ### Kul Bonus Rita med webbkameran
-[Webcam Paint Application Using OpenCV]((https://www.youtube.com/watch?v=ZiwZaAVbXQo)), följ guiden och lär dig göra ett eget paint-program med webbkameran. Titta i files/Webcam_Paint_OpenCV för fungerande exempelkod att ha som referens. Den på hans github, fungerade inte senast jag tittade.
+[Webcam Paint Application Using OpenCV](https://www.youtube.com/watch?v=ZiwZaAVbXQo), följ guiden och lär dig göra ett eget paint-program med webbkameran. Titta i files/Webcam_Paint_OpenCV för fungerande exempelkod att ha som referens. Den på hans github, fungerade inte senast jag tittade.
 Exempel på delar man kan utveckla:
 - Lägga till fler färger
 - Ha för valda objekt som skapas
