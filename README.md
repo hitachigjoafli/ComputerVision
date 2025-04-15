@@ -42,7 +42,7 @@ Gör de delar du tycker verkar spännande på videorna och gå sen vidare, ladda
 
 
 ### Kul Bonus Rita med webbkameran
-[Webcam Paint Application Using OpenCV](https://towardsdatascience.com/tutorial-webcam-paint-opencv-dbe356ab5d6c?), följ guiden och lär dig göra ett eget paint-program med webbkameran. Titta i files/Webcam_Paint_OpenCV för fungerande exempelkod att ha som referens. Den på hans github, fungerade inte senast jag tittade.
+[Webcam Paint Application Using OpenCV]((https://www.youtube.com/watch?v=ZiwZaAVbXQo)), följ guiden och lär dig göra ett eget paint-program med webbkameran. Titta i files/Webcam_Paint_OpenCV för fungerande exempelkod att ha som referens. Den på hans github, fungerade inte senast jag tittade.
 Exempel på delar man kan utveckla:
 - Lägga till fler färger
 - Ha för valda objekt som skapas
@@ -230,7 +230,7 @@ För att kunna hitta vägar eller streck i allmänhet i openMV så gör man lite
 
 Här kommer några bra resurser för att kunna göra din egen road recognition eller bara bli bättre på OpenMV överlag. Testa dessa, ändra saker,få inspiration, lek och få det till något bra, våga vinn:
 
-- [MaiXPY dokumentation](https://maixpy.sipeed.com/en/libs/machine_vision/image.html)
+- [MaiXPY dokumentation](https://wiki.sipeed.com/soft/maixpy/en/)
 - [MaiXPY openMV demon](https://github.com/AIWintermuteAI/maixpy-openmv-demos)
 - [Linear Regressions for Line Following w/ the OpenMV Cam](https://www.youtube.com/watch?v=dOd1TZFR480)
 - [OpenMV robot following lines](https://github.com/zlite/OpenMVrover/blob/master/linefollowing.py)
